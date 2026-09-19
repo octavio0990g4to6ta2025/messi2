@@ -1,0 +1,956 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La Historia de Lionel Messi</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: linear-gradient(135deg, #061b3a, #0878c9);
+            color: white;
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #8ed8ff;
+        }
+
+        nav button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            margin-left: 15px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        nav button:hover,
+        nav button.activo {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* ================= SECCIONES ================= */
+
+        .pestana {
+            display: none;
+            animation: aparecer 0.5s ease;
+        }
+
+        .pestana.activa {
+            display: block;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 650px;
+            background:
+                linear-gradient(rgba(3,20,45,0.65), rgba(3,20,45,0.8)),
+                url("imagenes/messi1.jpg") center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 40px;
+        }
+
+        .hero-contenido {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px black;
+        }
+
+        .hero p {
+            font-size: 22px;
+            line-height: 1.6;
+        }
+
+        .boton {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 30px;
+            background: #0a8fe8;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background: #066db2;
+            transform: scale(1.05);
+        }
+
+        /* ================= CONTENEDOR ================= */
+
+        .contenedor {
+            max-width: 1150px;
+            margin: auto;
+            padding: 70px 25px;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .titulo h2 {
+            font-size: 38px;
+            color: #062957;
+            margin-bottom: 10px;
+        }
+
+        .titulo p {
+            color: #666;
+            font-size: 17px;
+        }
+
+        /* ================= CARDS ================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-contenido {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: #075ca8;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* ================= HISTORIA ================= */
+
+        .historia {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .historia img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .historia-texto h2 {
+            color: #062957;
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .historia-texto p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        /* ================= TIMELINE ================= */
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            width: 4px;
+            background: #0789dd;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .evento {
+            width: 50%;
+            padding: 20px 40px;
+            position: relative;
+        }
+
+        .evento:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .evento:nth-child(even) {
+            left: 50%;
+        }
+
+        .evento-contenido {
+            background: white;
+            padding: 22px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .evento h3 {
+            color: #0878c9;
+            margin-bottom: 10px;
+        }
+
+        .evento p {
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* ================= ESTADISTICAS ================= */
+
+        .estadisticas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .estadistica {
+            background: linear-gradient(135deg, #062957, #0789dd);
+            color: white;
+            padding: 35px 15px;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .estadistica h3 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .estadistica p {
+            font-size: 15px;
+        }
+
+        /* ================= TABLA ================= */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #062957;
+            color: white;
+            padding: 18px;
+        }
+
+        td {
+            padding: 16px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #eef7ff;
+        }
+
+        /* ================= FRASE ================= */
+
+        .frase {
+            background: linear-gradient(135deg, #062957, #0789dd);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .frase h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .frase p {
+            font-size: 20px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #03152c;
+            color: white;
+            text-align: center;
+            padding: 35px;
+        }
+
+        footer p {
+            margin: 8px;
+            color: #cbd8e6;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .historia {
+                grid-template-columns: 1fr;
+            }
+
+            .estadisticas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .evento,
+            .evento:nth-child(even),
+            .evento:nth-child(odd) {
+                width: 100%;
+                left: 0;
+                text-align: left;
+                padding-left: 35px;
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= MENU ================= -->
+
+    <header>
+
+        <div class="logo">
+            MESSI<span>10</span>
+        </div>
+
+        <nav>
+            <button class="menu activo" onclick="mostrarPestana('inicio', this)">
+                Inicio
+            </button>
+
+            <button class="menu" onclick="mostrarPestana('historia', this)">
+                Historia
+            </button>
+
+            <button class="menu" onclick="mostrarPestana('logros', this)">
+                Logros
+            </button>
+        </nav>
+
+    </header>
+
+
+    <!-- ================================================= -->
+    <!-- ================= PESTAÑA INICIO ================= -->
+    <!-- ================================================= -->
+
+    <section id="inicio" class="pestana activa">
+
+        <div class="hero">
+
+            <div class="hero-contenido">
+
+                <h1>Lionel Messi</h1>
+
+                <p>
+                    La historia de uno de los futbolistas más importantes
+                    de todos los tiempos.
+                </p>
+
+                <a href="#conocer" class="boton">
+                    Conocer su historia
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="contenedor" id="conocer">
+
+            <div class="titulo">
+
+                <h2>El comienzo de una leyenda</h2>
+
+                <p>
+                    Desde Rosario hasta la cima del fútbol mundial.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <img src="imagenes/messi2.jpg" alt="Lionel Messi">
+
+                    <div class="card-contenido">
+
+                        <h3>Rosario</h3>
+
+                        <p>
+                            Lionel Andrés Messi nació el 24 de junio de 1987
+                            en Rosario, Santa Fe, Argentina.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <img src="imagenes/messi3.jpg" alt="Messi Barcelona">
+
+                    <div class="card-contenido">
+
+                        <h3>Barcelona</h3>
+
+                        <p>
+                            En su adolescencia llegó a España y comenzó a
+                            desarrollar una carrera extraordinaria en el
+                            FC Barcelona.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <img src="imagenes/messi4.jpg" alt="Messi Argentina">
+
+                    <div class="card-contenido">
+
+                        <h3>Argentina</h3>
+
+                        <p>
+                            Con la Selección Argentina consiguió importantes
+                            títulos y se convirtió en uno de los grandes
+                            referentes del país.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="frase">
+
+            <h2>Una carrera construida con talento y esfuerzo</h2>
+
+            <p>
+                De un niño de Rosario a campeón del mundo.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- ================= PESTAÑA HISTORIA =============== -->
+    <!-- ================================================= -->
+
+    <section id="historia" class="pestana">
+
+        <div class="contenedor">
+
+            <div class="titulo">
+
+                <h2>La historia de Messi</h2>
+
+                <p>
+                    Los momentos más importantes de su trayectoria.
+                </p>
+
+            </div>
+
+
+            <div class="historia">
+
+                <img src="imagenes/messi7.jpg" alt="Lionel Messi">
+
+                <div class="historia-texto">
+
+                    <h2>De Rosario al mundo</h2>
+
+                    <p>
+                        Lionel Messi nació en Rosario, Argentina, en 1987.
+                        Desde pequeño mostró una gran pasión y habilidad
+                        para jugar al fútbol.
+                    </p>
+
+                    <p>
+                        Durante su infancia jugó en las divisiones inferiores
+                        de Newell's Old Boys. Más tarde viajó a España para
+                        continuar su desarrollo futbolístico.
+                    </p>
+
+                    <p>
+                        En el FC Barcelona construyó gran parte de su carrera
+                        profesional, consiguiendo numerosos títulos y
+                        reconocimientos individuales.
+                    </p>
+
+                    <p>
+                        Con la Selección Argentina logró ganar la Copa América
+                        2021, la Finalissima 2022 y la Copa Mundial de Qatar
+                        2022.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TIMELINE -->
+
+        <div class="contenedor">
+
+            <div class="titulo">
+
+                <h2>Línea del tiempo</h2>
+
+                <p>
+                    Algunos momentos destacados de su carrera.
+                </p>
+
+            </div>
+
+
+            <div class="timeline">
+
+                <div class="evento">
+
+                    <div class="evento-contenido">
+
+                        <h3>1987</h3>
+
+                        <p>
+                            Nace Lionel Messi en Rosario, Santa Fe.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="evento">
+
+                    <div class="evento-contenido">
+
+                        <h3>2004</h3>
+
+                        <p>
+                            Debuta oficialmente con el primer equipo
+                            del FC Barcelona.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="evento">
+
+                    <div class="evento-contenido">
+
+                        <h3>2009</h3>
+
+                        <p>
+                            Gana el Balón de Oro y consigue grandes éxitos
+                            con el Barcelona.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="evento">
+
+                    <div class="evento-contenido">
+
+                        <h3>2014</h3>
+
+                        <p>
+                            Llega con Argentina a la final del Mundial
+                            disputado en Brasil.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="evento">
+
+                    <div class="evento-contenido">
+
+                        <h3>2021</h3>
+
+                        <p>
+                            Argentina gana la Copa América.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="evento">
+
+                    <div class="evento-contenido">
+
+                        <h3>2022</h3>
+
+                        <p>
+                            Argentina gana el Mundial de Qatar y Messi
+                            consigue su primer Mundial.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- ================= PESTAÑA LOGROS ================== -->
+    <!-- ================================================= -->
+
+    <section id="logros" class="pestana">
+
+        <div class="contenedor">
+
+            <div class="titulo">
+
+                <h2>Logros y estadísticas</h2>
+
+                <p>
+                    Algunos de los principales reconocimientos de Messi.
+                </p>
+
+            </div>
+
+
+            <div class="estadisticas">
+
+                <div class="estadistica">
+
+                    <h3>8</h3>
+
+                    <p>Balones de Oro</p>
+
+                </div>
+
+
+                <div class="estadistica">
+
+                    <h3>1</h3>
+
+                    <p>Copa del Mundo</p>
+
+                </div>
+
+
+                <div class="estadistica">
+
+                    <h3>4</h3>
+
+                    <p>Champions League</p>
+
+                </div>
+
+
+                <div class="estadistica">
+
+                    <h3>10</h3>
+
+                    <p>LaLiga</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="contenedor">
+
+            <div class="titulo">
+
+                <h2>Clubes</h2>
+
+                <p>
+                    Equipos en los que desarrolló su carrera profesional.
+                </p>
+
+            </div>
+
+
+            <table>
+
+                <tr>
+                    <th>Club</th>
+                    <th>País</th>
+                    <th>Etapa</th>
+                </tr>
+
+                <tr>
+                    <td>FC Barcelona</td>
+                    <td>España</td>
+                    <td>2004 - 2021</td>
+                </tr>
+
+                <tr>
+                    <td>Paris Saint-Germain</td>
+                    <td>Francia</td>
+                    <td>2021 - 2023</td>
+                </tr>
+
+                <tr>
+                    <td>Inter Miami</td>
+                    <td>Estados Unidos</td>
+                    <td>2023 - actualidad</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="contenedor">
+
+            <div class="titulo">
+
+                <h2>Palmarés internacional</h2>
+
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <img src="imagenes/messi4.jpg" alt="Messi y Argentina">
+
+                    <div class="card-contenido">
+
+                        <h3>Mundial 2022</h3>
+
+                        <p>
+                            Argentina se consagró campeona del mundo
+                            en Qatar 2022.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <img src="imagenes/messi5.jpg" alt="Messi Argentina">
+
+                    <div class="card-contenido">
+
+                        <h3>Copa América 2021</h3>
+
+                        <p>
+                            La Selección Argentina ganó la Copa América
+                            disputada en Brasil.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <img src="imagenes/messi6.jpg" alt="Messi">
+
+                    <div class="card-contenido">
+
+                        <h3>Finalissima 2022</h3>
+
+                        <p>
+                            Argentina derrotó a Italia y ganó la
+                            Finalissima 2022.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h2>MESSI 10</h2>
+
+        <p>
+            Página educativa dedicada a la trayectoria de Lionel Messi.
+        </p>
+
+		<p>
+            Chirino Nicolas,Octavio Gimenez
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function mostrarPestana(nombre, boton) {
+
+            // Ocultar todas las pestañas
+            const pestanas = document.querySelectorAll(".pestana");
+
+            pestanas.forEach(function(pestana) {
+                pestana.classList.remove("activa");
+            });
+
+
+            // Mostrar la pestaña seleccionada
+            document.getElementById(nombre).classList.add("activa");
+
+
+            // Quitar activo de los botones
+            const botones = document.querySelectorAll(".menu");
+
+            botones.forEach(function(b) {
+                b.classList.remove("activo");
+            });
+
+
+            // Activar botón seleccionado
+            boton.classList.add("activo");
+
+
+            // Volver arriba
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+    </script>
+
+</body>
+</html>
+```
